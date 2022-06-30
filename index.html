@@ -19,6 +19,10 @@
         font-family: My-First-Font-Advanced;
         src: url(fonts/my-first-font-advanced.ttf) format("truetype");
       }
+      @font-face {
+        font-family: My-First-Font-Spaced;
+        src: url(fonts/my-first-font-spaced.ttf) format("truetype");
+      }
       body {
         background-color: rgb(178, 255, 243);
         background-repeat: repeat;
@@ -38,7 +42,6 @@
         font-size: 500%;
       }
       .countdowntime {
-        font-family: "My-First-Font-Advanced", sans-serif;
         text-align: center;
         font-size: 1000%;
       }
@@ -248,20 +251,20 @@
     <a href="schiri-v.html">
       <img src="images/schiri.png" alt="Pfeiffe" class="schiri2">
     </a>
-    <hr />
-    <h2 class="countdown">Das event fängt in</h2>
-    <h2 class="countdowntime" style="color: rgb(10, 96, 209)">14 Tagen</h2>
-    <h2 class="countdown">an</h2>
-    <hr>
-    <h2 class="date">DONNERSTAG AM 14 JULI 2022 AB</h2>
-    <div id="center">
-      <img src="images/time.png" alt="14:00" class="time" />
-    </div>
     <hr>
     <h2 class="centered">REGELN</h2>
     <div class="center">
       <img src="images/All-Star-Games - Regelwerk - Fussball.jpg" alt="Regeln" class="regelnleft">
       <img src="images/All-Star-Games - Regelwerk - Volleyball.jpg" alt="Regeln" class="regelnright">
+    </div>
+    <hr />
+    <h2 class="countdown">Das event fängt in</h2>
+    <p id="demo" class="countdowntime"></p>
+    <h2 class="countdown">an</h2>
+    <hr>
+    <h2 class="date">DONNERSTAG AM 14 JULI 2022 AB</h2>
+    <div id="center">
+      <img src="images/time.png" alt="14:00" class="time" />
     </div>
     <hr>
     <a href="teams/sihlfeld/info.html" style="text-decoration: none;">
@@ -292,5 +295,22 @@
     <hr>
     <hr>
     <a href="languages.html" class="menu">Weitere Sprachen</a>
+    <script>
+    var countDownDate = new Date("July 14, 2022 14:00:00").getTime();
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+    </script>
   </body>
 </html>
